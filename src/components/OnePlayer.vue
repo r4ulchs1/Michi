@@ -1,21 +1,21 @@
-<script>
-export default {
+<script setup>
+    import SideBar from './SideBar.vue';
+    const emit= defineEmits();
 
-    methods:{
-        backToMenu(){
-            this.$emit('volver')
-        }
-    }
-}
+    const backToMenu=()=>{
+         emit('volver')
+    };
 </script>
 
 <template>
-    <div>
-        <h2>juegar de 1</h2>
-        <button @click="backToMenu">Volver al Menu</button>
+    <div class="h-screen">
+        <SideBar @volver="backToMenu"/>
+        <div class="flex items-center justify-center h-full">
+            <h1>Modo Un Jugador</h1>
+        </div>
     </div>
 </template>
 
-<style scoped>
 
+<style scoped>
 </style>
