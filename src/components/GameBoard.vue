@@ -81,7 +81,7 @@
 </script>
 
 <template>
-    <section class="text-white h-50 w-50 grid grid-cols-3 grid-rows-3 relative">
+    <section class="text-white h-90 w-90 grid grid-cols-3 grid-rows-3 relative">
         <div class="grid place-items-center" v-for="(square,index) in board" :key="index" @click="handleClick(index)">
             {{ square }}
         </div>
@@ -90,5 +90,5 @@
         <div class="absolute top-1/3 w-full h-1 bg-white"></div>
         <div class="absolute top-2/3 w-full h-1 bg-white"></div>
     </section>
-    <button @click="resetBoard">reset</button>
+    <button class="bg-red-700 rounded-2xl px-4 py-2 mt-10 text-white font-extrabold" @click="resetBoard">Resetear</button>
 </template>
