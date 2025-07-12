@@ -1,7 +1,7 @@
 <script setup>
     import { ref } from 'vue';
     const isSidebarOpen = ref(false);
-    const emit= defineEmits();
+    const emit= defineEmits(['volver']);
 
     const toggleSidebar = () => {
         isSidebarOpen.value = !isSidebarOpen.value;
@@ -19,8 +19,8 @@
             <div class="w-6 h-1 bg-white mb-1"></div>
             <div class="w-6 h-1 bg-white"></div>
         </div>
-        <div v-if="isSidebarOpen" class="fixed inset-0 bg-[rgba(0,0,0,0.35)]" @click="toggleSidebar"></div>
-        <aside :class="['rounded-r-2xl fixed h-screen w-64 bg-slate-800', { '-translate-x-full': !isSidebarOpen } ]">
+        <div v-if="isSidebarOpen" class="fixed inset-0 bg-[rgba(0,0,0,0.35)] z-1" @click="toggleSidebar"></div>
+        <aside :class="['rounded-r-2xl fixed h-screen w-64 bg-slate-800 z-2', { '-translate-x-full': !isSidebarOpen } ]">
             <div class="flex flex-col justify-center">
                 <div class="bg-green-500 py-3.5 text-center rounded-tr-2xl mb-4">
                     <h2 class="text-black font-bold">Menu</h2>

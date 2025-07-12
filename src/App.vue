@@ -6,7 +6,7 @@ import GameBoard from './components/GameBoard.vue';
 </script>
 
 <template>
-  <GameBoard/>
+  <MainMenu/>
 </template>
 
 <style scoped>

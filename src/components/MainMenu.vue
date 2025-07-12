@@ -1,32 +1,20 @@
-<script>
+<script setup>
+    import { ref } from 'vue';
     import Oneplayer from './OnePlayer.vue';
     import Twoplayer from './TwoPlayer.vue';
 
-    export default{
+    const isMenu = ref(true);
+    const isPlaying = ref(null);
 
-        components:{
-            Oneplayer, Twoplayer
-        },
-
-        data(){
-            return{
-                isMenu:true,
-                isPlaying:null
-            }
-        },
-
-        methods: {
-            backToMenu(){
-                this.isMenu=true,
-                this.isPlaying=null
-            },
-            playMode(modo){
-                this.isMenu=false,
-                this.isPlaying=modo,
-                console.log('asdasdasd')
-            },
-            }
-        }
+    
+    function backToMenu(){
+        isMenu.value = true
+        isPlaying.value = null
+    }
+    function playMode(modo){
+        isMenu.value  =false
+        isPlaying.value = modo
+    }
 </script>
 
 <template>
