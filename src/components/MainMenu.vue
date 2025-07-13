@@ -33,8 +33,8 @@
             </button>
         </div>
     </div>
-    <Oneplayer v-if="isPlaying==='onePlayer'" @volver="backToMenu"/>
-    <Twoplayer v-if="isPlaying==='twoPlayer'" @volver="backToMenu"/>
+    <Oneplayer v-else-if="isPlaying==='onePlayer'" @volver="backToMenu"/>
+    <Twoplayer v-else-if="isPlaying==='twoPlayer'" @volver="backToMenu"/>
 </template>
 
 <style scoped>
