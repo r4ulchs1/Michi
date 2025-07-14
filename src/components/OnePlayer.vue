@@ -21,7 +21,7 @@
             const randomIndex = vacias[Math.floor(Math.random() * vacias.length)];
             setTimeout(()=>{
                 boardRef.value.placeSymbol(randomIndex, turns.o);
-            },100)
+            },50)
         }
     }
 
