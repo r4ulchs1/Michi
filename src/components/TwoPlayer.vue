@@ -8,8 +8,9 @@
 
     
     const currentTurn = ref(turns.x);
-    function handleTurn(){
+    function handleTurn(board){
         currentTurn.value=currentTurn.value=== turns.x ? turns.o : turns.x;
+        console.log(board);
     }
 
     function backToMenu(){

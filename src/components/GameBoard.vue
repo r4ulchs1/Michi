@@ -21,7 +21,7 @@
             return;
         }
         board.value[index]= currentTurn;
-        handleTurn();
+        handleTurn(board.value);
     }
     
     watch(board, (newBoard)=>{
