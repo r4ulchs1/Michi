@@ -10,7 +10,6 @@
     const currentTurn = ref(turns.x);
     function handleTurn(board){
         currentTurn.value=currentTurn.value=== turns.x ? turns.o : turns.x;
-        console.log(board);
     }
 
     function backToMenu(){
@@ -39,7 +38,7 @@
 </script>
 
 <template>
-    <div class="h-screen relative">
+    <!-- <div class="h-screen relative"> -->
         <SideBar @volver="backToMenu"/>
         <div class="flex flex-col items-center justify-center h-full">
             <GameBoard :currentTurn="currentTurn" :handleTurn="handleTurn" @winner="handleWinner" @reset="resetGame" @ended="setDrawGame"/>
@@ -58,7 +57,7 @@
                 </div>
             </div>   
         </div>
-    </div>
+    <!-- </div> -->
 </template>
 
 
