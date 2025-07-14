@@ -1,5 +1,6 @@
 <script setup>
     import {ref, watch, defineProps} from 'vue';
+    import confetti from 'canvas-confetti';
     const emit=defineEmits(['winner','reset','ended']);
     import {winner_combo} from '../utils/constants'
     const {currentTurn, handleTurn} = defineProps({
@@ -31,6 +32,7 @@
     watch(winner,(newWinner)=>{
         if(newWinner!==null){
             emit('winner',newWinner);
+            confetti();
         }
     })
     function checkWinner(board){
