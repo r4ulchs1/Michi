@@ -63,6 +63,14 @@
         emit('reset');
     }
 
+    //funcion para que coloque la maquina
+    function placeSymbol(index, symbol) {
+        if (board.value[index] === null && winner.value === null) {
+        board.value[index] = symbol
+        handleTurn(board.value)
+    }
+    }
+    defineExpose({ placeSymbol });
 </script>
 
 <template>
