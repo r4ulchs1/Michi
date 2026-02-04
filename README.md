@@ -22,3 +22,9 @@ Implementa:
 -   **Tailwind CSS**
 -   **Axios**
 -   **Pinia** & **Vue Router**
+
+## Arranque / deploy
+
+- Clonar el repo
+- Instalar las depedencias ( npm install )
+- Enlace de deploy : https://keen-liger-f64fde.netlify.app/
