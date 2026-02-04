@@ -1,5 +1,24 @@
-# Vue 3 + Vite
+# Michi (Tic-Tac-Toe) - Vue 3 Demo
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+![Vue 3](https://img.shields.io/badge/Vue.js-3.x-4FC08D?style=for-the-badge&logo=vue.js)
+![Pinia](https://img.shields.io/badge/Pinia-Store-FFE032?style=for-the-badge&logo=pinia)
+![Vue Router](https://img.shields.io/badge/Vue_Router-4.x-4FC08D?style=for-the-badge&logo=vue.js)
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+Proyecto personal desarrollado para practicar y demostrar una arquitectura frontend escalable utilizando el ecosistema de Vue 3.
+
+## � Sobre el proyecto
+
+El objetivo principal no es solo la lógica del juego, sino cómo estructurar una aplicación tipo SPA (Single Page Application) de forma ordenada.
+
+Implementa:
+-   **Navegación:** Uso de `vue-router` para separar el Menú del Juego.
+-   **Estado Global:** Uso de `pinia` para guardar nombres y puntajes sin perderlos al cambiar de vista.
+-   **API:** En el modo "Un Jugador", el nombre del rival (CPU) se trae de una API(`jsonplaceholder`).
+
+## 🛠️ Stack
+
+-   **Vue 3** (Script Setup + Composition API)
+-   **Vite**
+-   **Tailwind CSS**
+-   **Axios**
+-   **Pinia** & **Vue Router**
