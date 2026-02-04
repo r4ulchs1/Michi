@@ -1,12 +1,30 @@
 <script setup>
-    import { ref } from 'vue';
-    import SideBar from './SideBar.vue';
-    import GameBoard from './GameBoard.vue';
+    import { ref, onMounted } from 'vue';
+    import { useRouter } from 'vue-router';
+    import axios from 'axios';
+    import { useGamePCStore } from '../stores/gameStore';
+    import GameBoard from '../components/GameBoard.vue';
     import {turns} from '../utils/constants'
-    const emit= defineEmits(['volver']);
-
+    import SideBar from '../components/SideBar.vue';
+import ScoreBoard from '../components/ScoreBoard.vue';
+import WinnerModal from '../components/WinnerModal.vue';
+    
+    const router = useRouter();
+    const store = useGamePCStore();
 
     const boardRef=ref(null);
+    const cpuName = ref('CPU');
+
+    onMounted(async () => {
+        try {
+            const response = await axios.get('https://jsonplaceholder.typicode.com/users/' + Math.floor(Math.random() * 10 + 1));
+            cpuName.value = response.data.name;
+            store.setPCName(response.data.name);
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    });
+
 
     const currentTurn = ref(turns.x);
     function handleTurn(board){
@@ -21,12 +39,12 @@
             const randomIndex = vacias[Math.floor(Math.random() * vacias.length)];
             setTimeout(()=>{
                 boardRef.value.placeSymbol(randomIndex, turns.o);
-            },50)
+            },500)
         }
     }
 
     function backToMenu(){
-         emit('volver')
+         router.push('/');
     };
 
     const gameState=ref('none');
@@ -36,11 +54,15 @@
         if(turnWinner!=null){
             gameState.value='winner';
             winnerValue.value=turnWinner;
+        
+            if(turnWinner === turns.x) store.incrementP1();
+            if(turnWinner === turns.o) store.incrementPC();
         }
     }
     
     function setDrawGame(){
         gameState.value='draw';
+        store.incrementDraw();
     }
 
     function resetGame(){
@@ -54,21 +76,10 @@
     <div class="h-screen relative">
         <SideBar @volver="backToMenu"/>
         <div class="flex flex-col items-center justify-center h-full">
+            <h3 class="text-white text-xl mb-4 font-bold">VS: {{ cpuName }}</h3>
+            <ScoreBoard :player1="store.score.p1" :draw="store.score.draw" :player2="store.score.pc"/>
             <GameBoard ref="boardRef" :currentTurn="currentTurn" :handleTurn="handleTurn" @winner="handleWinner" @reset="resetGame" @ended="setDrawGame"/>
-            <div v-if="gameState!='none'" class="fixed inset-0 bg-[rgba(0,0,0,0.35)] z-2">
-                <div class="grid h-screen place-items-center">
-                    <div class="w-sm h-1/3 bg-slate-800 border-white border-1 grid place-items-center text-white">
-                        <div class="flex flex-col items-center gap-13" v-if="gameState==='winner'">
-                            <p class="text-4xl font-extrabold">Ganador:</p>
-                            <p class="text-4xl">{{winnerValue}}</p>
-                        </div>
-                        <div class="flex flex-col items-center gap-13" v-else-if="gameState==='draw'">
-                            <p class="text-4xl font-extrabold">Empate</p>
-                        </div>
-                        <button class="bg-red-900 px-4 py-3 rounded-2xl font-extrabold text-4xl" @click="resetGame">Cerrar</button>
-                    </div>
-                </div>
-            </div>   
+            <WinnerModal :gameState="gameState" :winnerValue="winnerValue" @reset="resetGame"/>
         </div>
     </div>
 </template>

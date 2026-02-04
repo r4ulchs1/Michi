@@ -1,8 +1,9 @@
 <script setup>
     import {ref, watch, defineProps} from 'vue';
     import confetti from 'canvas-confetti';
-    const emit=defineEmits(['winner','reset','ended']);
     import {winner_combo} from '../utils/constants'
+
+    const emit=defineEmits(['winner','reset','ended']);
     const {currentTurn, handleTurn} = defineProps({
         currentTurn:{
             type: String,
