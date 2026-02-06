@@ -5,8 +5,8 @@
     import {turns} from '../utils/constants';
     import { useGameStore } from '../stores/gameStore';
     import SideBar from '../components/SideBar.vue';
-import ScoreBoard from '../components/ScoreBoard.vue';
-import WinnerModal from '../components/WinnerModal.vue';
+    import ScoreBoard from '../components/ScoreBoard.vue';
+    import WinnerModal from '../components/WinnerModal.vue';
     
     const router = useRouter();
     const store = useGameStore();
